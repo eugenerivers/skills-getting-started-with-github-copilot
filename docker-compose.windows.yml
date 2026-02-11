@@ -1,0 +1,18 @@
+# Windows-specific Docker Compose configuration
+# To use this file on Windows, run:
+#   docker-compose -f docker-compose.yml -f docker-compose.windows.yml up
+#
+# This file omits X11 forwarding which is not supported on Windows
+# For GUI applications on Windows, consider using:
+# - WSL2 with X server (VcXsrv, Xming, or WSLg)
+# - Remote desktop connection to the container
+services: 
+  vintrospect:
+    # No X11 volumes on Windows
+    # If you need GUI support on Windows:
+    # 1. Install an X server (VcXsrv, Xming, or use WSLg with WSL2)
+    # 2. Set DISPLAY environment variable to your host IP
+    environment:
+      # Uncomment and set to your Windows host IP if using X server
+      # - DISPLAY=host.docker.internal:0.0
+      - LIBGL_ALWAYS_INDIRECT=1

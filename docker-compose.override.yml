@@ -1,0 +1,13 @@
+# Linux-specific Docker Compose override
+# This file is automatically used when docker-compose is run on Linux
+# It adds X11 forwarding support for GUI applications
+services: 
+  vintrospect:
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${XAUTHORITY:-~/.Xauthority}:${XAUTHORITY:-/root/.Xauthority}
+      - ${XDG_RUNTIME_DIR:-/run/user/1000}:${XDG_RUNTIME_DIR:-/run/user/1000}
+    environment:
+      - XAUTHORITY=${XAUTHORITY:-/root/.Xauthority}
+      - DISPLAY=${DISPLAY:-:0}
+      - XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/1000}
