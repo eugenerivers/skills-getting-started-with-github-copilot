@@ -17,13 +17,13 @@ On Linux, Docker Compose automatically uses both `docker-compose.yml` and `docke
 
 ```bash
 # Build and run
-docker-compose up --build
+docker compose up --build
 
 # Run in background
-docker-compose up -d
+docker compose up -d
 
 # Stop
-docker-compose down
+docker compose down
 ```
 
 The Linux configuration includes X11 forwarding for GUI applications with safe defaults:
@@ -37,13 +37,13 @@ On Windows, you need to explicitly specify the Windows configuration file:
 
 ```bash
 # Build and run on Windows
-docker-compose -f docker-compose.yml -f docker-compose.windows.yml up --build
+docker compose -f docker-compose.yml -f docker-compose.windows.yml up --build
 
 # Run in background
-docker-compose -f docker-compose.yml -f docker-compose.windows.yml up -d
+docker compose -f docker-compose.yml -f docker-compose.windows.yml up -d
 
 # Stop
-docker-compose -f docker-compose.yml -f docker-compose.windows.yml down
+docker compose -f docker-compose.yml -f docker-compose.windows.yml down
 ```
 
 #### GUI Support on Windows
