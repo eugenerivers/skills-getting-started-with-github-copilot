@@ -1,0 +1,29 @@
+# Dockerfile for vintrospect application
+FROM ubuntu:22.04
+
+# Install basic dependencies
+RUN apt-get update && apt-get install -y \
+    bash \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create working directory
+RUN mkdir -p /root/vintrospect
+
+# Copy application files
+# COPY vintrospect /root/vintrospect/
+
+# Set working directory
+WORKDIR /root/vintrospect
+
+# Note: The actual vintrospect.x86_64 binary should be copied during build
+# COPY ./vintrospect.x86_64 /root/vintrospect/
+# RUN chmod +x /root/vintrospect/vintrospect.x86_64
+
+# Default command (can be overridden by docker-compose)
+CMD ["bash"]

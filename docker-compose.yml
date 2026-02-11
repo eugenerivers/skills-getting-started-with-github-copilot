@@ -1,0 +1,22 @@
+services: 
+  vintrospect:
+    image: vintrospect:latest
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.vintrospect
+    hostname: vintrospect
+    container_name: vintrospect
+    privileged: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - 127.0.0.1:10000:10000
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    command: bash -c "cd root/vintrospect && ./vintrospect.x86_64"
